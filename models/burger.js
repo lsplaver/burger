@@ -6,13 +6,13 @@ var burger = {
             cb(res);
         });
     },
-    insertOne: function(burgerName, burgerEaten, cb) {
-        orm.insertOne("burgers", "burger_name", "devoured", burgerNameInsert, burgerEaten, function (res) {
+    insertOne: function(burgerName, burgerEaten, nameVal, eatenVal, cb) {
+        orm.insertOne("burgers",  /*"burger_name", "devoured",*/ burgerName, burgerEaten, nameVal, eatenVal, function (res) {
             cb(res);
         });
     },
-    updateOne: function(burgerEaten, id, cb) {
-        orm.updateOne("burgers", "devoured", burgerEaten, "id", id, function (res) {
+    updateOne: function(burgerEaten, eatenVal, id, cb) {
+        orm.updateOne("burgers", "devoured", eatenVal, "id", id, function (res) {
             cb(res);
         });
     }
