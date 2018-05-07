@@ -14,8 +14,19 @@ var orm = {
         });
     },
     insertOne: function (tableInsert, colName, colEaten, valName, valEaten, cb) {
-        var queryString = "INSERT INTO ?? (??, ??) VALUES  (??, ??)";
-        connection.query(queryString, [tableInsert, colName, colEaten, valName, valEaten], function (err, result) {
+        console.log("orm.js: insertOne: tableInsert: ", tableInsert);
+        console.log("orm.js: insertOne: colName: ", colName);
+        console.log("orm.js: insertOne: colEaten: ", colEaten);
+        console.log("orm.js: insertOne: valName: ", valName);
+        console.log("orm.js: insertOne: valEaten: ", valEaten);
+        // console.log("orm.js: insertOne: colName.burgerNameCol: ", colName.burgerNameCol);
+        // console.log("orm.js: insertOne: colName.burgerEatenCol: ", colName.burgerEatenCol);
+        // console.log("orm.js: insertOne: colEaten.burgerNameVal: ", colEaten.burgerNameVal);
+        // console.log("orm.js: insertOne: colEaten.burgerEatenVal: ", colEaten.burgerEatenVal);
+        var queryString = "INSERT INTO ?? (??, ??) VALUES (?, ?)";
+        // connection.query(queryString, [tableInsert, colName, colEaten, valName, valEaten], function (err, result) {
+        // var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES (??, false)";
+        connection.query(queryString, [tableInsert, /*colName.burgerNameCol, colName.burgerEatenCol, colEaten.burgerNameVal, colEaten.burgerEatenVal*/ colName, colEaten, valName, valEaten], function(err, result) {
             if (err) {
                 console.log(err);
                 throw err;

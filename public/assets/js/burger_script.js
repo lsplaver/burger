@@ -16,4 +16,24 @@ $(function () {
             }
         );
     });
+
+    $(".newForm").on("submit", function (event) {
+        event.preventDefault();
+        var name = $("#inputBurger").val().trim();
+
+        var newName = {
+            burger_name: name,
+            devoured: false
+        };
+
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newName
+        }).then(
+            function() {
+                console.log("Added a new burger");
+                location.reload();
+            }
+        );
+    });
 });

@@ -19,8 +19,12 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
-        res.json(affectedRows);
+    // burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
+    console.log("burger_controller.js: router.post: req.body.burger_name: ", req.body.burger_name);
+    // console.log("burger_controller.js: router.post: req.")
+    burger.insertOne("burgers", "burger_name", "devoured", req.body.burger_name, false, function (result) {
+        // res.json(affectedRows);
+        res.json({ id: result.insertId });
     });
 });
 
