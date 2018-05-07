@@ -1,0 +1,40 @@
+<div class="newBody">
+    <h1>Eat-Da-Burger</h1>
+    <div>
+        <div class="uneaten">
+            <ul>
+                <label>Uneaten Burgers</label>
+                {{#each burgers}} {{#unless devoured}}
+                <li>
+                    {{ id }} {{ burger_name }} {{ devoured }}
+                    <button class="isEaten" data-id="{{id}}" data-waseaten="true">Eaten</button>
+                </li>
+                {{/unless}} {{/each}}
+            </ul>
+        </div>
+        <div class="eaten">
+            <ul>
+                <label>Already Eaten Burgers</label>
+                {{#each burgers}} {{#if devoured}}
+                <li>
+                    {{ id }} {{ burger_name }} {{ devoured }}
+                </li>
+                {{/if}} {{/each}}
+            </ul>
+        </div>
+        <div class="newBurger">
+            <form class="newForm">
+                <br>
+                <div>
+                    <label for="inputBurger">Enter the name of your burger here:</label>
+                    <input type="text" id="inputBurger" name="burgerName">
+                </div>
+                <br>
+                <div>
+                    <label for="btnSubmit">Submit your order here:</label>
+                    <button id="btnSubmit" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
