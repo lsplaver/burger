@@ -1,21 +1,8 @@
 {
-  "name": "burger",
-  "version": "0.1.0",
-  "description": "Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lsplaver/burger.git"
-  },
   "author": "Lawrence Splaver",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lsplaver/burger/issues"
   },
-  "homepage": "https://github.com/lsplaver/burger#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
@@ -23,7 +10,21 @@
     "mysql": "^2.15.0",
     "npm": "^5.7.1"
   },
+  "description": "Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.",
   "engines": {
     "npm": "5.7.1"
-  }
+  },
+  "homepage": "https://github.com/lsplaver/burger#readme",
+  "license": "MIT",
+  "main": "server.js",
+  "name": "burger",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsplaver/burger.git"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
 }
