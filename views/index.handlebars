@@ -4,7 +4,7 @@
         <div class="uneaten">
             <ul>
                 <label>Uneaten Burgers</label>
-                {{#each burgers}} {{#unless devoured}} {{!-- {{devoured="0"}} --}}
+                {{#each burgers}} {{#unless devoured}}
                 <li>
                     {{ id }} {{ burger_name }} {{ devoured }}
                     <button class="isEaten" data-id="{{id}}" data-waseaten="true">Eaten</button>
@@ -12,24 +12,16 @@
                 {{/unless}} {{/each}}
             </ul>
         </div>
-
-        <br>
-        <br>
-
         <div class="eaten">
             <ul>
                 <label>Already Eaten Burgers</label>
-                {{#each burgers}} {{#if devoured}} {{!-- {{devoured=true}} --}}
+                {{#each burgers}} {{#if devoured}}
                 <li>
                     {{ id }} {{ burger_name }} {{ devoured }}
                 </li>
                 {{/if}} {{/each}}
             </ul>
         </div>
-        <br>
-        <br>
-
-
         <div class="newBurger">
             <form class="newForm">
                 <br>

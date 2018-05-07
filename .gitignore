@@ -56,11 +56,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-~node_modules~/
-package-lock.json.~
-package.json~
-package.json.~
-~~node_modules~~/
-package-lock.json.~~
-config/connection.1.js
