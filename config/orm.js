@@ -1,4 +1,4 @@
-var connection = require("../config/connection,js");
+var connection = require("../config/connection.js");
 
 var orm = {
     selectAll: function (tableSelect, cb) {
@@ -25,15 +25,54 @@ var orm = {
             cb(result);
         });
     },
-    updateOne: function(tableUpdate, colUpdate, valUpdate, colWhere, valWhere, cb) {
-        var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
-        connection.query(queryString, [tableUpdate, colUpdate, valUpdate, colWhere, valWhere], function (err, result) {
+    // UPDATE ?? SET ?? = ? WHERE ?? = ?
+    updateOne: function (tableUpdate, colUpdate, valUpdate, colWhere, valWhere, cb) {
+        // console.log("tableUpdate: ", tableUpdate);
+        console.log("colUpdate: ", colUpdate);
+        console.log("valUpdate: ", valUpdate);
+        // console.log("colWhere: ", colWhere);
+        console.log("valWhere: ", valWhere);
+        if (!isNaN(valWhere)) {
+            console.log("valWhere is a number");
+        }
+        else {
+            console.log("valWhere is not a number");
+        }
+        // console.log("var type of valWhere: ", valWhere.typeOf());
+        // console.log("cb: ", cb.toString());
+        // var queryString = "UPDATE ?? SET ?? = ? WHERE ? = ?";
+        // console.log("queryString: " + queryString.substring(0, 7) + tableUpdate + queryString.substring(9, 14) + colUpdate + queryString.substring(16, 19) + valUpdate);
+        // var queryString = "UPDATE burgers SET devoured = " + valUpdate + " WHERE id = " + valWhere;
+        var updateColumn = colUpdate + " = " + valUpdate;
+        console.log("updateColumn: ", updateColumn);
+        var whereVal = -9999;
+        whereVal = valWhere;
+        console.log("whereVal: ", valWhere);
+        var updateWhere = colWhere + " = " + valWhere;
+        console.log("updateWhere: ", updateWhere);
+        var queryString = "UPDATE burgers SET devoured = true WHERE id = ?"; // + valWhere;
+        // connection.query(queryString, [tableUpdate, colUpdate, valUpdate, colWhere, valWhere], function (err, result) {
+        connection.query(queryString, /*[,,valUpdate,, valWhere]*/ /*[updateColumn, */valWhere/*.valueOf()]*/, function (err, result) {
+            // console.log("queryString: " + connection.query(queryString, [tableUpdate, colUpdate, valUpdate, colWhere, valWhere]));
+            // console.log("orm.js: updateOne: connection.query(queryString...): query length: " + connection.query.length);
             if (err) {
                 console.log(err);
                 throw err;
             }
 
-            console.log(result);
+            else {
+                console.log("orm.js: updateOne: connection.query(queryString...): result: \n", result);
+                connection.query("SELECT * FROM burgers", function (err, result) {
+                    if (err) {
+                        console.log(err);
+                        throw err;
+                    }
+
+                    console.log("result of full select after update before update's cb(result) fires: \n", result);
+                });
+            }
+            // console.log("updated cb: ", cb);
+            // console.log("updated cb(result: " + cb(result));
             cb(result);
         });
     }

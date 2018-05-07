@@ -1,28 +1,37 @@
 var express = require("express");
-var burger = require("../models/burger.js");
 
 var router = express.Router();
 
+var burger = require("../models/burger.js");
 router.get("/", function (req, res) {
     burger.selectAll(function(data) {
         var burgerOutputObject = {
             burgers: data
         };
-
+        console.log("get req.body: " + req.body.burgers);
+        // console.log("data: " + json.data.toString()); // req.json(data)); // res.json(data));
         console.log(burgerOutputObject);
+        console.log("req.body.eaten: " + req.body.devoured);
+        console.log("data.devoured: " + burgerOutputObject.burgers.eaten); //data.devoured);
 
         res.render("index", burgerOutputObject);
     });
 });
 
 router.post("/api/burgers", function (req, res) {
-    burger.insertOne("name", "eaten", req.body.name, req.body.eaten, function(result) {
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
         res.json(affectedRows);
     });
 });
 
-router.post("/api/burger/:id", function (req, res) {
-    burger.updateOne("eaten", req.body.eaten, "id", req.body.id, function (result) {
+router.put("/api/burgers/:id", function (req, res) {
+    // var temp = req.body.toString();
+    var temp = {};
+    temp = req.body;
+    console.log("req.body: \n" + temp.toString());
+    console.log("devoured: " + req.body.devoured);
+    console.log("id: " + req.params.id);
+    burger.updateOne("burgers", "devoured", req.body.devoured, "id", req.params.id, function (result) {
         if (result.changedRows == 0) {
             return res.status(404).end();
         }
