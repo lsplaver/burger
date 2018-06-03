@@ -1,7 +1,7 @@
 # MySQL Burger Manager
 
 ## Purpose:
-Eat-Da-Burger! is a restaurant app utilizing Sequelize that lets users input the names of burgers they'd like to eat.
+Eat-Da-Burger! is a restaurant app utilizing MySQL that lets users input the names of burgers they'd like to eat.
 
 ## Description:
 In this project you are presented with two tables and an input area which allow you to manage burgers.  That means you can add new burgers and update a burger once it has been eaten.
